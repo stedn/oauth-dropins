@@ -23,3 +23,13 @@ test:
     - python -m coverage html -d $CIRCLE_ARTIFACTS
   post:
     - if [ "$COVERALLS_REPO_TOKEN" != "" ]; then coveralls; fi
+
+
+# continuous deployment! deploy to prod app engine when tests pass on master.
+# https://circleci.com/docs/introduction-to-continuous-deployment/
+# https://circleci.com/docs/deploy-google-app-engine/
+deployment:
+  prod:
+    branch: master
+    commands:
+      - ./scripts/deploy.sh --oauth2_access_token=$APP_ENGINE_ACCESS_TOKEN --oauth2_refresh_token=$APP_ENGINE_REFRESH_TOKEN
