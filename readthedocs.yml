@@ -1,5 +1,5 @@
-requirements_file: requirements.txt
+requirements_file: requirements.rtd.txt
 python:
-  # setup_py_install: true
-  extra_requirements:
-    - appengine-sdk
+  setup_py_install: true
+  # extra_requirements:
+  #   - appengine-sdk
